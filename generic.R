@@ -5,11 +5,11 @@
 }
 
 
-`<=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2), .Primitive("<=")(hset1, hset2))
-`>=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1), .Primitive(">=")(hset1, hset2))
+`<=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2), return(.Primitive("<=")(hset1, hset2)))
+`>=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1), return(.Primitive(">=")(hset1, hset2)))
 
-`<`     <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2, strictly = TRUE), .Primitive("<")(hset1, hset2))
-`>`     <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1, strictly = TRUE), .Primitive(">")(hset1, hset2))
+`<`     <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2, strictly = TRUE), return(.Primitive("<")(hset1, hset2)))
+`>`     <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1, strictly = TRUE), return(.Primitive(">")(hset1, hset2)))
 
 `%=<=%` <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2, exactly  = TRUE), stop("the operator '%=<=%' is defined only for arguments of class 'hset'"))
 `%=>=%` <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1, exactly  = TRUE), stop("the operator '%=>=%' is defined only for arguments of class 'hset'"))
@@ -17,8 +17,8 @@
 `%=<%`  <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset1, hset2, strictly = TRUE, exactly = TRUE), stop("the operator '%=<%' is defined only for arguments of class 'hset'"))
 `%=>%`  <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hset1.included.to.hset2(hset2, hset1, strictly = TRUE, exactly = TRUE), stop("the operator '%=>%' is defined only for arguments of class 'hset'"))
 
-`==`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hsets.are.equal(hset1, hset2), .Primitive("==")(hset1, hset2))
-`!=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2),!hsets.are.equal(hset1, hset2), .Primitive("!=")(hset1, hset2))
+`==`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2), hsets.are.equal(hset1, hset2), return(.Primitive("==")(hset1, hset2)))
+`!=`    <- function(hset1, hset2) ifelse(is.hset(hset1) & is.hset(hset2),!hsets.are.equal(hset1, hset2), return(.Primitive("!=")(hset1, hset2)))
 
 
 `%&~%`   <- function(hset1, hset2) intersection(hset1, hset2, semantic = "value")

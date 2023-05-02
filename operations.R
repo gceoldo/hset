@@ -39,7 +39,6 @@ hsets.are.equal <- function(hset1, hset2) {
     if(some.operand.is.generalized(hset1, hset2)) return(all(members(hset1) == members(hset2)) & all(multiplicities(hset1) == multiplicities(hset2)))
     else return(all(members(hset1) == members(hset2)))
   }
-  
 } 
 
 
@@ -76,7 +75,7 @@ all.operands.are.hsets <- function(hset1, ...) return(is.hset(hset1) & all(sappl
 create.new.hset <- function(hset1, generalized, semantic) {
   if(semantic.is.valid(semantic)) {
     if(semantic == "refer") new.hset <- refer.to.hset(hset1, generalized = generalized)
-    if(semantic == "value") new.hset <- copy.hset(hset1, generalized = generalized)
+    if(semantic == "value") new.hset <- clone.of.hset(hset1, generalized = generalized)
     return(new.hset)
   } else stop("'semantic' must be 'refer' or 'value'")
 }
@@ -139,8 +138,9 @@ pdif <- function(...) {
 
 niff <- function(...) {
   if(...length() > 0L) {
-    operands <- list(...)
-    return((sum(operands) %% 2L) == 0L)
+    #operands <- list(...)
+    #return((sum(operands) %% 2L) == 0L)
+    return((sum(...) %% 2L) != 0L)
   }
   else {
     warning("In nimp() : no arguments to nimp; returning FALSE")
